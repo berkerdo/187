@@ -1,0 +1,93 @@
+{
+	"meta": {
+		"generatedAt": "2025-09-23T16:41:12.240Z",
+		"tasksAnalyzed": 10,
+		"totalTasks": 10,
+		"analysisCount": 10,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": false
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Setup Project Repository",
+			"complexityScore": 4,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down the task into creating the Git repository, setting up Node.js with TypeScript, and installing dependencies.",
+			"reasoning": "The task involves multiple setup steps that are straightforward but require attention to detail to ensure all configurations are correct."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Implement Autocomplete Enumeration",
+			"complexityScore": 7,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Divide the task into automating Etsy queries, automating Google queries, implementing alphabet walkers, and storing results.",
+			"reasoning": "The task involves complex automation and data handling, requiring careful implementation and testing of each component."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Develop Category & Trending Harvesting",
+			"complexityScore": 6,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Separate the task into navigating category pages, extracting data, and processing keywords.",
+			"reasoning": "The task requires web crawling and data extraction, which can be challenging due to dynamic content and data processing needs."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Implement Keyword Pre-filtering",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Split the task into filtering by length, filtering by stopwords, and filtering by marketplace rules.",
+			"reasoning": "The task involves implementing multiple filtering criteria, each requiring specific logic and testing."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Fetch and Parse Search Results",
+			"complexityScore": 8,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Break down the task into fetching search pages, parsing HTML, extracting metrics, and storing data.",
+			"reasoning": "The task is complex due to the need for accurate data extraction and handling potentially large volumes of data."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Implement Listing Page Sampling",
+			"complexityScore": 6,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Divide the task into sampling listing pages, extracting metrics, and calculating review velocity.",
+			"reasoning": "The task involves multiple steps of data extraction and calculation, each requiring precise implementation."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Integrate Google Trends Data",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Separate the task into fetching trends data, normalizing data, and integrating into scoring.",
+			"reasoning": "The task involves data fetching and integration, which requires handling external API data and ensuring compatibility with existing systems."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "Compute Opportunity Scores",
+			"complexityScore": 7,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down the task into implementing the scoring formula, normalizing inputs, and storing scores.",
+			"reasoning": "The task involves complex calculations and data handling, requiring careful implementation to ensure accuracy."
+		},
+		{
+			"taskId": 9,
+			"taskTitle": "Export Results to CSV",
+			"complexityScore": 4,
+			"recommendedSubtasks": 2,
+			"expansionPrompt": "Divide the task into implementing CSV export logic and writing 'why it ranks' explanations.",
+			"reasoning": "The task is relatively straightforward but requires attention to detail to ensure data is correctly formatted and explained."
+		},
+		{
+			"taskId": 10,
+			"taskTitle": "Implement Logging and Observability",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Separate the task into setting up structured logging, capturing metrics, and summarizing results.",
+			"reasoning": "The task involves setting up logging and observability, which requires careful planning to capture relevant metrics and ensure system transparency."
+		}
+	]
+}

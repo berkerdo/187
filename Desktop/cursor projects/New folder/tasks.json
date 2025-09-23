@@ -1,0 +1,141 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup Project Repository",
+        "description": "Initialize the project repository with necessary configurations and dependencies.",
+        "details": "Create a new Git repository and set up the project structure. Initialize a Node.js project with TypeScript. Install Playwright, SQLite, and Python dependencies. Create a settings.yaml file for configuration and a .env file for secrets.",
+        "testStrategy": "Verify that the repository is initialized correctly and all dependencies are installed without errors.",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement Autocomplete Enumeration",
+        "description": "Develop the functionality to discover keywords using Etsy and Google autocomplete suggestions.",
+        "details": "Use Playwright to automate the process of querying Etsy and Google autocomplete. Implement alphabet walkers to generate prefixes and fetch suggestions. Store the results in the SQLite database.",
+        "testStrategy": "Test with a limited set of prefixes to ensure suggestions are fetched and stored correctly.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Develop Category & Trending Harvesting",
+        "description": "Implement crawling of Etsy category and trending pages to extract potential keywords.",
+        "details": "Use Playwright to navigate Etsy's category and trending pages. Extract listing titles and tags, then process them to identify noun phrases as candidate keywords. Store these in the database.",
+        "testStrategy": "Run the crawler on a sample category page and verify that keywords are extracted and stored correctly.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Keyword Pre-filtering",
+        "description": "Develop a pre-filtering mechanism to discard irrelevant or non-compliant keywords early in the process.",
+        "details": "Implement logic to filter out keywords that are too short, contain only stopwords, or violate marketplace rules. Use quick checks like head requests to filter by results count.",
+        "testStrategy": "Test with a set of known irrelevant keywords to ensure they are filtered out correctly.",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Fetch and Parse Search Results",
+        "description": "Fetch search result pages for each keyword and parse relevant metrics.",
+        "details": "Use Playwright to fetch the first two pages of search results for each keyword. Parse the HTML to extract metrics like results count, ad ratio, and top cards. Store the parsed data in the database.",
+        "testStrategy": "Verify that the search results are fetched and parsed correctly by comparing with expected metrics for a sample keyword.",
+        "priority": "high",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Implement Listing Page Sampling",
+        "description": "Sample individual listing pages to gather additional metrics like favorites and review velocity.",
+        "details": "For each keyword, sample 6-10 listing pages. Use Playwright to fetch the pages and extract metrics such as favorites count and recent review timestamps. Calculate review velocity and store the data.",
+        "testStrategy": "Test with a sample keyword to ensure listing pages are sampled and metrics are calculated correctly.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Integrate Google Trends Data",
+        "description": "Fetch and integrate Google Trends data for each keyword to enhance demand scoring.",
+        "details": "Use the pytrends library to fetch 12-month average interest data for each keyword. Normalize and integrate this data into the demand scoring process.",
+        "testStrategy": "Verify that Google Trends data is fetched and integrated correctly by comparing with known trends for a sample keyword.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Compute Opportunity Scores",
+        "description": "Calculate opportunity scores for each keyword based on demand and competition metrics.",
+        "details": "Implement the scoring formula using the provided weights and metrics. Normalize inputs and compute the opportunity score for each keyword. Store the scores in the database.",
+        "testStrategy": "Test the scoring algorithm with a set of sample keywords to ensure scores are calculated accurately.",
+        "priority": "high",
+        "dependencies": [
+          6,
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Export Results to CSV",
+        "description": "Develop functionality to export the final keyword rankings and metrics to a CSV file.",
+        "details": "Implement a CSV exporter that writes the top keywords and their metrics to a file in the specified format. Include a 'why it ranks' explanation for the top 50 keywords.",
+        "testStrategy": "Verify that the CSV is generated correctly and contains the expected data for a sample run.",
+        "priority": "medium",
+        "dependencies": [
+          8
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Implement Logging and Observability",
+        "description": "Set up structured logging and observability for the entire pipeline.",
+        "details": "Implement JSON structured logs to capture page fetch timings, retry counts, and parse statistics. Summarize the results at the end of each run, including top wins and slowest pages.",
+        "testStrategy": "Run a sample pipeline execution and verify that logs are generated and summarized correctly.",
+        "priority": "low",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-23T16:38:55.331Z",
+      "updated": "2025-09-23T16:38:55.331Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

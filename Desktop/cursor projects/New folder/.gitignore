@@ -1,0 +1,18 @@
+# Ignore everything outside this directory
+/*
+# But include files in this directory
+!PRD.md
+!task-complexity-report.json
+!tasks.json
+!.gitignore
+!README.md
+
+# Common ignores
+.DS_Store
+*.log
+node_modules/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
