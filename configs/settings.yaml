@@ -1,0 +1,160 @@
+# Default configuration for the Etsy keyword discovery pipeline
+runtime:
+  geo: "US"
+  discovery_budget: 3000
+  pages_to_sample: 2
+  min_results: 200
+  max_results: 20000
+  sleep_min_ms: 2000
+  sleep_max_ms: 7000
+  concurrency: 2
+
+weights:
+  review_velocity: 1.0
+  favorites: 0.5
+  ad_ratio: 0.8
+  dominance: 0.7
+  price_dispersion: 0.4
+
+playwright:
+  headless: true
+  proxy:
+    enabled: false
+    url: ""
+    username: ""
+    password: ""
+  user_agents:
+    - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+    - "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15"
+
+paths:
+  data_dir: "./data"
+  outputs_dir: "./outputs"
+  db_file: "./data/cache.db"
+
+logging:
+  level: "info"
+  format: "json"
+
+discovery:
+  autocomplete:
+    include_sources:
+      etsy: true
+      google: true
+    min_suggestions_to_expand: 4
+    max_depth: 2
+    alphabet:
+      - "a"
+      - "b"
+      - "c"
+      - "d"
+      - "e"
+      - "f"
+      - "g"
+      - "h"
+      - "i"
+      - "j"
+      - "k"
+      - "l"
+      - "m"
+      - "n"
+      - "o"
+      - "p"
+      - "q"
+      - "r"
+      - "s"
+      - "t"
+      - "u"
+      - "v"
+      - "w"
+      - "x"
+      - "y"
+      - "z"
+    initial_prefixes: []
+    sleep_between_requests_ms: 300
+    request_timeout_ms: 12000
+    max_suggestions_per_prefix: 20
+    google_language: "en"
+  category_trending:
+    enabled: true
+    category_urls:
+      - "https://www.etsy.com/c/home-and-living"
+      - "https://www.etsy.com/c/jewelry-and-accessories"
+    trending_urls:
+      - "https://www.etsy.com/trending-items"
+    max_pages_per_url: 2
+    scroll_attempts: 6
+    wait_between_scroll_ms: 1500
+    max_keywords_per_page: 120
+    min_tokens: 2
+    max_tokens: 4
+
+filtering:
+  min_length: 3
+  max_length: 60
+  min_tokens: 1
+  max_tokens: 5
+  stopwords:
+    - "the"
+    - "and"
+    - "for"
+    - "with"
+    - "gift"
+    - "etsy"
+    - "your"
+    - "from"
+    - "that"
+    - "this"
+    - "have"
+    - "will"
+    - "you"
+    - "are"
+    - "but"
+    - "was"
+  forbidden_patterns:
+    - "^etsy"
+    - "gift card"
+    - "coupon"
+    - "logo"
+  require_letter: true
+  allow_numbers: true
+  max_consecutive_repeat: 3
+  min_character_ratio: 0.6
+  head_request:
+    enabled: false
+    timeout_ms: 4000
+
+search:
+  pages: 2
+  wait_for_selector_ms: 15000
+  sleep_between_pages_ms: 2500
+  capture_html: true
+  result_selector_fallbacks:
+    - "ol[data-search-results] li[data-listing-id]"
+    - "[data-search-results] li"
+    - "li.wt-list-unstyled"
+
+sampling:
+  per_keyword: 8
+  wait_between_requests_ms: 2500
+  concurrency: 1
+  review_window_days: 30
+
+trends:
+  enabled: true
+  lookback_months: 12
+  geo: "US"
+  batch_size: 5
+  sleep_between_batches_ms: 1500
+
+exporter:
+  enabled: true
+  output_basename: "run"
+  top_n: 250
+  explain_top_n: 50
+  include_components: true
+
+observability:
+  log_samples: 5
+  summary_top_n: 10
+  slow_threshold_ms: 20000
